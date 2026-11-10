@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FrameUp – Studio de montaj video · Clipurile tale, montate ca în film</title>
+<meta name="description" content="FrameUp – studio de montaj video fondat de Popov Serghei. Transformăm filmările brute în clipuri clare, dinamice și gata de publicat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F5FC;--bg-alt:#fff;--fg:#0B1020;--muted:#5B6478;--line:#E5E1F0;--accent:#FF6B35;--accent-2:#7C3AED;--accent-3:#FFC857;--navy:#0B1020;--card:#fff;--shadow:0 12px 40px rgba(11,16,32,.08);--radius:22px}
+@media(prefers-color-scheme:dark){:root{--bg:#070B16;--bg-alt:#111A30;--fg:#F1F5F9;--muted:#94A3B8;--line:#1E293B;--card:#111A30;--shadow:0 12px 40px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}a{color:inherit;text-decoration:none}
+
+header{position:sticky;top:0;z-index:100;background:rgba(11,16,32,.95);backdrop-filter:blur(18px);color:#F4F1FA;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.45rem}
+.logo-circle{width:48px;height:48px;border-radius:50%;background:#0B1020;border:2px solid #FF6B35;overflow:hidden;display:grid;place-items:center;flex-shrink:0;box-shadow:0 0 0 3px rgba(124,58,237,.25)}
+.logo-circle img{width:100%;height:100%;object-fit:cover;transform:scale(1.15)}
+.logo i{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-weight:500;font-size:.95rem;opacity:.88}
+.nav-links a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#0B1020;font-weight:700;padding:12px 24px;border-radius:99px;border:none;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,53,.35)}
+.btn-outline{background:transparent;color:#F4F1FA;border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08)}
+
+.hero{background:var(--navy);color:#F4F1FA;padding:96px 0 110px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(2.8rem,5.4vw,4.6rem);line-height:1.05;margin:0 0 16px}
+.hero h1 span{color:var(--accent)}
+.hero .lead{font-size:1.15rem;color:#A9B1C7;max-width:500px;margin-bottom:28px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-logo{width:100%;max-width:340px;margin-left:auto;border-radius:32px;box-shadow:0 20px 50px rgba(124,58,237,.25)}
+
+section{padding:84px 0}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.4vw,2.85rem);font-style:italic;margin:0 0 10px}
+.section-sub{color:var(--muted);font-size:1.05rem;margin-bottom:40px;max-width:640px}
+
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.pill{padding:8px 16px;border-radius:99px;font-weight:600;font-size:.9rem}
+.pill.r{background:#FF6B35;color:#0B1020}.pill.c{background:#7C3AED;color:#fff}.pill.s{background:#FFC857;color:#0B1020}
+
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+.step-num{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#0B1020;margin-bottom:14px;font-size:1.2rem}
+.step h3{margin:0 0 6px;font-size:1.15rem}
+.step p{margin:0;color:var(--muted);font-size:.93rem}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{background:var(--bg-alt);border:1px solid var(--line);padding:10px 16px;border-radius:99px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:.92rem}
+.chip.active{background:var(--navy);color:#F4F1FA;border-color:var(--navy)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.service-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;display:flex;flex-direction:column;transition:.25s}
+.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.service-card .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:14px;font-size:1.45rem}
+.service-card h3{margin:0 0 8px;font-size:1.2rem}
+.service-card p{margin:0;color:var(--muted);flex:1;font-size:.95rem}
+.service-card .price{margin-top:14px;font-weight:700;font-size:.88rem;color:var(--accent)}
+
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pkg{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:32px 24px;position:relative;display:flex;flex-direction:column}
+.pkg.featured{background:var(--navy);color:#F4F1FA;border-color:transparent;transform:scale(1.03)}
+.pkg .badge{position:absolute;top:-12px;right:20px;background:var(--accent);color:#0B1020;font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:99px}
+.pkg h3{margin:0 0 6px;font-size:1.7rem;font-family:'Playfair Display',serif;font-style:italic}
+.pkg .price-tag{font-weight:600;color:var(--accent);margin-bottom:18px}
+.pkg.featured .price-tag{color:#FFC857}
+.pkg ul{list-style:none;padding:0;margin:0 0 24px;flex:1}
+.pkg li{padding:7px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.pkg.featured li{border-color:rgba(255,255,255,.1)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.gallery-card{background:var(--card);border-radius:24px;overflow:hidden;border:1px solid var(--line);transition:.25s}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.gallery-card img{width:100%;height:240px;object-fit:cover;display:block;background:#0B1020}
+.gallery-card .cap{padding:18px 20px}
+.gallery-card .cap strong{display:block;font-size:1.05rem;margin-bottom:4px}
+.gallery-card .cap span{color:var(--muted);font-size:.9rem}
+
+.cta-band{background:linear-gradient(135deg,#7C3AED,#FF6B35);color:#fff;border-radius:32px;padding:56px 40px;text-align:center}
+.cta-band h2{font-family:'Playfair Display',serif;font-style:italic;font-size:2.4rem;margin:0 0 10px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+form{display:flex;flex-direction:column;gap:14px}
+input,textarea,select{font:inherit;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:var(--bg-alt);color:var(--fg)}
+textarea{min-height:110px;resize:vertical}
+footer{background:var(--navy);color:#A9B1C7;padding:36px 0;text-align:center;font-size:.9rem}
+footer strong{color:#fff}
+.video-wrap{max-width:400px;margin:0 auto 28px;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:#0B1020}
+
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.packages,.process{grid-template-columns:1fr}
+  .pkg.featured{transform:none}
+  .nav-links{display:none}
+  .hero{padding:64px 0 76px}
+  .logo-circle{width:42px;height:42px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <div class="logo-circle">
+        <img src="assets/frameup_logo_v2_fara_benzi.png" alt="Logo FrameUp">
+      </div>
+      Frame<i>Up</i>
+    </div>
+    <nav class="nav-links">
+      <a href="#despre">Despre</a>
+      <a href="#servicii">Servicii</a>
+      <a href="#pachete">Pachete</a>
+      <a href="#brosura">Broșură</a>
+      <a href="#carte">Carte</a>
+      <a href="#ambalaje">Ambalaje</a>
+      <a href="#produse">Produse</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn">Cere ofertă</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p style="letter-spacing:.2em;font-size:.82rem;color:#A9B1C7;margin-bottom:10px">STUDIO DE MONTAJ VIDEO</p>
+      <h1>Clipurile tale,<br><span>montate ca în film.</span></h1>
+      <p class="lead">Transformăm filmările brute în clipuri clare, dinamice și gata de publicat. Ritm, culoare și sunet lucrează împreună pentru rezultate care atrag priviri.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn">▶ Începe proiectul</a>
+        <a href="#servicii" class="btn btn-outline">Vezi serviciile</a>
+      </div>
+    </div>
+    <div>
+      <img class="hero-logo" src="assets/frameup_logo_v2_fara_benzi.png" alt="Emblema FrameUp">
+    </div>
+  </div>
+</section>
+
+<section id="despre">
+  <div class="wrap about-grid">
+    <div>
+      <h2 class="section-title">Despre noi</h2>
+      <p>FrameUp este studioul meu de montaj video. Ajut creatorii, brandurile și evenimentele să își transforme materialul filmat în clipuri care se văd bine, se aud clar și spun o poveste.</p>
+      <p style="margin-top:14px">Nu livrez doar tăieturi. Lucrez pe ritm, pe culoare și pe sunet, ca rezultatul să arate profesionist pe orice platformă — de la Reels și TikTok până la YouTube sau prezentări de firmă.</p>
+      <div class="pills">
+        <span class="pill r">🎵 Ritm</span>
+        <span class="pill c">🎨 Culoare</span>
+        <span class="pill s">🔊 Sunet</span>
+      </div>
+    </div>
+    <div>
+      <img src="assets/brosura_pagina2_despre_noi.png" alt="Procesul FrameUp" style="width:100%;border-radius:28px;box-shadow:var(--shadow)">
+    </div>
+  </div>
+</section>
+
+<section id="proces" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <h2 class="section-title">Cum lucrăm</h2>
+    <p class="section-sub">Patru pași clari, de la discuție la clipul gata de postat.</p>
+    <div class="process">
+      <div class="step">
+        <div class="step-num" style="background:#FF6B35">💬</div>
+        <h3>1. Discuție</h3>
+        <p>Aflăm ce vrei să transmiți și care e stilul dorit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7C3AED;color:#fff">✂️</div>
+        <h3>2. Montaj</h3>
+        <p>Tăiem, sincronizăm, colorăm și adăugăm muzică.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#FFC857">🔄</div>
+        <h3>3. Revizuire</h3>
+        <p>Ajustăm până îți place rezultatul final.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#38BDF8">📦</div>
+        <h3>4. Livrare</h3>
+        <p>Primești clipul gata de postat pe orice platformă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicii">
+  <div class="wrap">
+    <h2 class="section-title">Servicii</h2>
+    <p class="section-sub">De la Reels scurte la filme de nuntă sau spoturi publicitare — alege ce ai nevoie.</p>
+    <div class="filters" id="filters">
+      <button class="chip active" data-cat="all">✦ Toate</button>
+      <button class="chip" data-cat="social">📱 Social media</button>
+      <button class="chip" data-cat="youtube">▶️ YouTube</button>
+      <button class="chip" data-cat="event">🎉 Evenimente</button>
+      <button class="chip" data-cat="biz">💼 Business</button>
+    </div>
+    <div class="services-grid" id="services"></div>
+  </div>
+</section>
+
+<section id="pachete" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <h2 class="section-title">Pachete</h2>
+    <p class="section-sub">Trei variante clare. Prețurile sunt la cerere — spune-mi detaliile proiectului.</p>
+    <div class="packages">
+      <div class="pkg">
+        <h3>Start</h3>
+        <div class="price-tag">Preț la cerere</div>
+        <ul>
+          <li>1 clip scurt</li>
+          <li>Montaj și muzică</li>
+          <li>1 revizuire inclusă</li>
+        </ul>
+        <a href="#contact" class="btn" style="width:100%">Alege Start</a>
+      </div>
+      <div class="pkg featured">
+        <div class="badge">Recomandat</div>
+        <h3>Pro</h3>
+        <div class="price-tag">Preț la cerere</div>
+        <ul>
+          <li>Până la 3 clipuri</li>
+          <li>Subtitrări și efecte</li>
+          <li>2 revizuiri incluse</li>
+        </ul>
+        <a href="#contact" class="btn" style="width:100%;background:#FFC857">Alege Pro</a>
+      </div>
+      <div class="pkg">
+        <h3>Premium</h3>
+        <div class="price-tag">Preț la cerere</div>
+        <ul>
+          <li>Pachet lunar</li>
+          <li>Intro, miniaturi, culoare</li>
+          <li>Revizuiri nelimitate</li>
+        </ul>
+        <a href="#contact" class="btn" style="width:100%">Alege Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap" style="text-align:center">
+    <h2 class="section-title">Video de prezentare</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">Clipul de 10 secunde cu sunet, format vertical, potrivit pentru Reels, TikTok și Shorts.</p>
+    <div class="video-wrap">
+      <iframe src="assets/frameup-video-10s.html" style="width:100%;height:620px;border:none" title="FrameUp video 10s"></iframe>
+    </div>
+    <a href="assets/frameup-video-10s.html" target="_blank" class="btn">Deschide videoul pe tot ecranul</a>
+  </div>
+</section>
+
+<section id="brosura" style="background:var(--bg-alt)">
+  <div class="wrap">
+    <h2 class="section-title">Broșură de prezentare</h2>
+    <p class="section-sub">Cele trei pagini ale broșurii FrameUp — de la copertă până la pachete.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:start">
+      <div style="text-align:center">
+        <img src="assets/brosura_pagina1_coperta.png" alt="Broșură copertă" style="width:100%;max-width:320px;border-radius:24px;box-shadow:var(--shadow);margin-bottom:12px">
+        <strong>Copertă</strong>
+        <p style="color:var(--muted);margin:4px 0 0;font-size:.95rem">Imaginea ta, în mișcare.</p>
+      </div>
+      <div style="text-align:center">
+        <img src="assets/brosura_pagina2_despre_noi.png" alt="Broșură despre noi" style="width:100%;max-width:320px;border-radius:24px;box-shadow:var(--shadow);margin-bottom:12px">
+        <strong>Despre noi</strong>
+        <p style="color:var(--muted);margin:4px 0 0;font-size:.95rem">Studioul FrameUp și cum lucrăm.</p>
+      </div>
+      <div style="text-align:center">
+        <img src="assets/brosura_pagina3_pachete.png" alt="Broșură pachete" style="width:100%;max-width:320px;border-radius:24px;box-shadow:var(--shadow);margin-bottom:12px">
+        <strong>Pachete</strong>
+        <p style="color:var(--muted);margin:4px 0 0;font-size:.95rem">Start · Pro · Premium</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carte">
+  <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div>
+      <h2 class="section-title">Carte de vizită</h2>
+      <p class="section-sub">Popov Serghei · Editor video</p>
+      <p>Cartea de vizită cu gradientul brandului, logo-ul și datele de contact, gata de tipărit.</p>
+      <p style="margin-top:16px;font-size:1.05rem;line-height:1.8">
+        📱 +373 000 00 000<br>
+        ✉️ contact@frameup.md<br>
+        🌐 www.frameup.md
+      </p>
+    </div>
+    <div style="text-align:center">
+      <img src="assets/carte_vizita_spate_v4_gradient.png" alt="Carte de vizită FrameUp" style="width:100%;max-width:460px;border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.15)">
+    </div>
+  </div>
+</section>
+
+<section id="ambalaje" style="background:linear-gradient(180deg,#F7F5FC 0%,#F1EEF8 100%)">
+  <div class="wrap" style="display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center">
+    <div style="text-align:center">
+      <img src="assets/ambalaje_frameup.png" alt="Ambalaje FrameUp" style="width:100%;max-width:520px;border-radius:28px;box-shadow:var(--shadow)">
+    </div>
+    <div>
+      <h2 class="section-title">Ambalaje personalizate</h2>
+      <p class="section-sub">Cutie, pungă, stickere și card de mulțumire.</p>
+      <p>Ambalajele poartă emblema FrameUp și culorile brandului — perfecte pentru livrări, cadouri sau kituri de client.</p>
+      <ul style="margin-top:16px;padding-left:20px;color:var(--muted)">
+        <li>Cutie bleumarin cu bandă portocalie</li>
+        <li>Pungă portocalie cu logo</li>
+        <li>Stickere rotunde</li>
+        <li>Card „Mulțumim!”</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="produse">
+  <div class="wrap">
+    <h2 class="section-title">Produse inscripționate</h2>
+    <p class="section-sub">Cană, tricou, pix cu carnet și geantă — toate cu logo-ul FrameUp.</p>
+    <div style="text-align:center;margin-bottom:24px">
+      <img src="assets/produse_inscriptionate_frameup.png" alt="Produse FrameUp" style="width:100%;max-width:680px;border-radius:28px;box-shadow:var(--shadow)">
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center">
+      <div><div style="font-size:2.4rem;margin-bottom:8px">☕</div><strong>Cană</strong></div>
+      <div><div style="font-size:2.4rem;margin-bottom:8px">👕</div><strong>Tricou</strong></div>
+      <div><div style="font-size:2.4rem;margin-bottom:8px">✏️</div><strong>Pix și carnet</strong></div>
+      <div><div style="font-size:2.4rem;margin-bottom:8px">👜</div><strong>Geantă</strong></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Să începem proiectul tău</h2>
+      <p>Spune-mi ce vrei să montezi și îți trimit o ofertă personalizată.</p>
+      <a href="#contact" class="btn" style="background:#fff;color:#0B1020">Contactează-mă</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">Popov Serghei · Editor video</p>
+      <p style="font-size:1.05rem;line-height:1.8">
+        📱 <strong>+373 000 00 000</strong><br>
+        ✉️ <strong>contact@frameup.md</strong><br>
+        🌐 <strong>www.frameup.md</strong>
+      </p>
+      <p style="margin-top:18px;color:var(--muted)">Datele de contact sunt momentan provizorii. Înlocuiește-le cu cele reale când ești gata.</p>
+      <div style="margin-top:28px">
+        <img src="assets/carte_vizita_spate_v4_gradient.png" alt="Carte de vizită" style="max-width:380px;width:100%;border-radius:16px;box-shadow:var(--shadow)">
+      </div>
+    </div>
+    <form id="quoteForm">
+      <input type="text" name="name" placeholder="Numele tău" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <select name="service">
+        <option value="">Ce serviciu te interesează?</option>
+        <option>Social media / Reels / TikTok</option>
+        <option>YouTube (montaj, intro, miniaturi)</option>
+        <option>Evenimente (nuntă, aftermovie)</option>
+        <option>Business (spot, prezentare)</option>
+        <option>Pachet lunar / Premium</option>
+        <option>Altceva</option>
+      </select>
+      <textarea name="message" placeholder="Spune-mi pe scurt despre proiectul tău..." required></textarea>
+      <button type="submit" class="btn">Trimite cererea de ofertă</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>FrameUp</strong> · Studio de montaj video · Popov Serghei</p>
+    <p style="margin-top:8px">Clipurile tale, montate ca în film.</p>
+  </div>
+</footer>
+
+<script>
+const SERVICES = [
+  {c:'social', t:'Reel scurt', d:'Clip de 15–30 de secunde, cu ritm, subtitrări și muzică.', ico:'📱', col:'#FF6B35'},
+  {c:'social', t:'Pachet TikTok', d:'Cinci clipuri verticale montate în același stil.', ico:'🎵', col:'#FF6B35'},
+  {c:'social', t:'Shorts YouTube', d:'Clipuri scurte pregătite pentru Shorts și Reels.', ico:'▶️', col:'#FF6B35'},
+  {c:'youtube', t:'Montaj YouTube', d:'Tăieturi, tranziții, culoare și sunet pentru videoclipul tău.', ico:'🎬', col:'#7C3AED'},
+  {c:'youtube', t:'Intro și outro', d:'Început și final animate, cu logo-ul canalului.', ico:'✨', col:'#7C3AED'},
+  {c:'youtube', t:'Miniaturi', d:'Imagini de copertă care îndeamnă la click.', ico:'🖼️', col:'#7C3AED'},
+  {c:'event', t:'Film de nuntă', d:'Cele mai frumoase momente, montate cu emoție.', ico:'💍', col:'#FFC857'},
+  {c:'event', t:'Aftermovie', d:'Rezumat dinamic pentru petreceri și evenimente.', ico:'🎉', col:'#FFC857'},
+  {c:'biz', t:'Spot publicitar', d:'Reclamă video scurtă pentru firma ta.', ico:'📺', col:'#38BDF8'},
+  {c:'biz', t:'Prezentare video', d:'Despre firmă, produse sau echipă, pe înțelesul tuturor.', ico:'💼', col:'#38BDF8'},
+  {c:'biz', t:'Corecție de culoare', d:'Aspect unitar și profesionist pentru filmările existente.', ico:'🎨', col:'#38BDF8'}
+];
+const grid = document.getElementById('services');
+const filters = document.getElementById('filters');
+function render(cat='all'){
+  grid.innerHTML = SERVICES.filter(s=>cat==='all'||s.c===cat).map(s=>`
+    <article class="service-card">
+      <div class="ico" style="background:${s.col}">${s.ico}</div>
+      <h3>${s.t}</h3>
+      <p>${s.d}</p>
+      <div class="price">Preț la cerere</div>
+    </article>`).join('');
+}
+filters.addEventListener('click', e=>{
+  if(!e.target.classList.contains('chip')) return;
+  filters.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  render(e.target.dataset.cat);
+});
+render();
+document.getElementById('quoteForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const d = new FormData(this);
+  const body = `Nume: ${d.get('name')}\nE-mail: ${d.get('email')}\nServiciu: ${d.get('service')}\n\nMesaj:\n${d.get('message')}`;
+  window.location.href = `mailto:contact@frameup.md?subject=${encodeURIComponent('Cerere de ofertă FrameUp')}&body=${encodeURIComponent(body)}`;
+});
+</script>
+</body>
+</html>

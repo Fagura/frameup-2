@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FrameUp – catalog de servicii</title>
+<style>
+:root{--bg:#F1EEF8;--card:#FFFFFF;--fg:#0B1020;--muted:#5B6478;--line:#DDD8EA;--chip:#E6E0F5;--btn:#0B1020;--btnfg:#F4F1FA;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070B16;--card:#111A30;--fg:#F1F5F9;--muted:#94A3B8;--line:#1E293B;--chip:#1B2540;--btn:#F1F5F9;--btnfg:#0B1020}}
+:root[data-theme="dark"]{--bg:#070B16;--card:#111A30;--fg:#F1F5F9;--muted:#94A3B8;--line:#1E293B;--chip:#1B2540;--btn:#F1F5F9;--btnfg:#0B1020}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:16px 16px 40px}
+.hero{position:relative;overflow:hidden;background:#0B1020;color:#F4F1FA;border-radius:24px;padding:32px 24px;min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero .ring{position:absolute;right:-70px;top:50%;width:300px;height:300px;margin-top:-150px;border:2px solid #16203A;border-radius:50%}
+.hero .emb{position:absolute;right:20px;top:50%;width:170px;height:170px;margin-top:-85px}
+.wm{font-size:20px;font-weight:700;margin:0}
+.wm i{font-style:normal;color:#FF6B35}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;font-size:clamp(34px,7vw,56px);line-height:1.05;margin:0;max-width:60%}
+.hero p.lead{margin:0;color:#A9B1C7;max-width:52%;font-size:15px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.chip{font:inherit;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--chip);color:var(--fg);border-radius:99px;padding:9px 18px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--btn);color:var(--btnfg);border-color:var(--btn)}
+.chip:focus-visible,.add:focus-visible,.send:focus-visible{outline:3px solid #7C3AED;outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.ico{width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.card h3{margin:6px 0 0;font-size:19px}
+.card .cat{font-size:12px;letter-spacing:.08em;color:var(--muted);margin:0}
+.card p.d{margin:0;color:var(--muted);font-size:15px;flex:1}
+.price{font-weight:700;font-size:14px}
+.add{font:inherit;font-weight:600;font-size:14px;border:1.5px solid var(--btn);background:transparent;color:var(--fg);border-radius:99px;padding:9px 16px;cursor:pointer}
+.add[aria-pressed="true"]{background:var(--btn);color:var(--btnfg)}
+.cart{position:sticky;bottom:0;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0B1020;color:#F4F1FA;border-radius:18px;padding:12px 14px 12px 20px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.send{background:#FF6B35;color:#0B1020;font-weight:700;text-decoration:none;border-radius:99px;padding:10px 20px;white-space:nowrap}
+.foot{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+@media (max-width:560px){.hero h1,.hero p.lead{max-width:100%}.hero .emb{opacity:.18;right:-30px}.hero .ring{display:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="ring"></div>
+    <svg class="emb" viewBox="0 0 200 200" role="img" aria-label="Emblema FrameUp"><circle cx="100" cy="100" r="86" fill="none" stroke="#FF6B35" stroke-width="3" stroke-dasharray="1 10" stroke-linecap="round"/><circle cx="100" cy="100" r="70" fill="#7C3AED"/><circle cx="100" cy="100" r="56" fill="#0B1020"/><path d="M68 82V68H82M118 68H132V82M68 118V132H82M118 132H132V118" fill="none" stroke="#F4F1FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M91 86L91 114L114 100Z" fill="#FF6B35" stroke="#FF6B35" stroke-width="5" stroke-linejoin="round"/><circle cx="160" cy="48" r="14" fill="#FF6B35"/><path d="M153 51L160 43L167 51" fill="none" stroke="#F4F1FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p class="wm">Frame<i>Up</i></p>
+    <h1>Catalog de servicii</h1>
+    <p class="lead">Alege serviciile care te interesează și trimite o cerere de ofertă dintr-o singură apăsare.</p>
+  </header>
+
+  <div class="bar" id="filters" role="group" aria-label="Filtrează după categorie"></div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+
+  <div class="cart" id="cart" hidden>
+    <span id="count"></span>
+    <a class="send" id="send" href="#">Cere ofertă</a>
+  </div>
+  <p class="foot">Popov Serghei · +373 000 00 000 · contact@frameup.md · www.frameup.md</p>
+</main>
+<script>
+(function(){
+  var CATS={all:'Toate',social:'Social media',youtube:'YouTube',event:'Evenimente',biz:'Business'};
+  var COL={social:'#FF6B35',youtube:'#7C3AED',event:'#FFC857',biz:'#38BDF8'};
+  var ICON={
+    social:'<path d="M9 7L9 19L20 13Z" fill="#0B1020" stroke="#0B1020" stroke-width="2" stroke-linejoin="round"/>',
+    youtube:'<rect x="4" y="7" width="20" height="14" rx="4" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.5L12 17.5L18 14Z" fill="#fff"/>',
+    event:'<path d="M14 4Q14 14 24 14Q14 14 14 24Q14 14 4 14Q14 14 14 4Z" fill="#0B1020"/>',
+    biz:'<rect x="5" y="15" width="4" height="7" rx="1" fill="#0B1020"/><rect x="12" y="10" width="4" height="12" rx="1" fill="#0B1020"/><rect x="19" y="5" width="4" height="17" rx="1" fill="#0B1020"/>'
+  };
+  var ITEMS=[
+    {c:'social',t:'Reel scurt',d:'Clip de 15–30 de secunde, cu ritm, subtitrări și muzică.'},
+    {c:'social',t:'Pachet TikTok',d:'Cinci clipuri verticale montate în același stil.'},
+    {c:'social',t:'Shorts YouTube',d:'Clipuri scurte pregătite pentru Shorts și Reels.'},
+    {c:'youtube',t:'Montaj YouTube',d:'Tăieturi, tranziții, culoare și sunet pentru videoclipul tău.'},
+    {c:'youtube',t:'Intro și outro',d:'Început și final animate, cu logo-ul canalului.'},
+    {c:'youtube',t:'Miniaturi',d:'Imagini de copertă care îndeamnă la click.'},
+    {c:'event',t:'Film de nuntă',d:'Cele mai frumoase momente, montate cu emoție.'},
+    {c:'event',t:'Aftermovie',d:'Rezumat dinamic pentru petreceri și evenimente.'},
+    {c:'biz',t:'Spot publicitar',d:'Reclamă video scurtă pentru firma ta.'},
+    {c:'biz',t:'Prezentare video',d:'Despre firmă, produse sau echipă, pe înțelesul tuturor.'},
+    {c:'biz',t:'Corecție de culoare',d:'Aspect unitar și profesionist pentru filmările existente.'}
+  ];
+  var cur='all',sel={};
+  var fEl=document.getElementById('filters'),gEl=document.getElementById('grid'),cart=document.getElementById('cart'),cnt=document.getElementById('count'),snd=document.getElementById('send');
+  function chips(){
+    fEl.innerHTML='';
+    Object.keys(CATS).forEach(function(k){
+      var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=CATS[k];b.setAttribute('aria-pressed',String(k===cur));
+      b.addEventListener('click',function(){cur=k;chips();render()});fEl.appendChild(b);
+    });
+  }
+  function render(){
+    gEl.innerHTML='';
+    ITEMS.forEach(function(it){
+      if(cur!=='all'&&it.c!==cur)return;
+      var a=document.createElement('article');a.className='card';
+      a.innerHTML='<div class="ico" style="background:'+COL[it.c]+'"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">'+ICON[it.c]+'</svg></div><p class="cat">'+CATS[it.c]+'</p><h3></h3><p class="d"></p><p class="price">Preț la cerere</p>';
+      a.querySelector('h3').textContent=it.t;a.querySelector('.d').textContent=it.d;
+      var b=document.createElement('button');b.type='button';b.className='add';
+      function paint(){var on=!!sel[it.t];b.setAttribute('aria-pressed',String(on));b.textContent=on?'Adăugat la ofertă':'Adaugă la ofertă'}
+      paint();
+      b.addEventListener('click',function(){if(sel[it.t])delete sel[it.t];else sel[it.t]=1;paint();cartUpdate()});
+      a.appendChild(b);gEl.appendChild(a);
+    });
+  }
+  function cartUpdate(){
+    var names=Object.keys(sel),n=names.length;
+    cart.hidden=n===0;
+    cnt.textContent=n+(n===1?' serviciu ales':' servicii alese');
+    var body='Bună ziua,\n\nMă interesează următoarele servicii FrameUp:\n- '+names.join('\n- ')+'\n\nVă rog să-mi trimiteți o ofertă.';
+    snd.href='mailto:contact@frameup.md?subject='+encodeURIComponent('Cerere de ofertă FrameUp')+'&body='+encodeURIComponent(body);
+  }
+  chips();render();
+})();
+</script>
+</body>
+</html>
